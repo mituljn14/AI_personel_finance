@@ -1,0 +1,11 @@
+check,issues
+users.user_id unique,0
+transactions -> users,0
+budgets: unknown user,0
+budgets: duplicate budget_id,0
+budgets: duplicate user-year-month-category,0
+budgets: invalid month/category/amount,0
+recurring: scheduled occurrence missing,0
+recurring: transaction not on schedule / duplicated,0
+recurring: fixed amount != expected_amount,0
+recurring: unknown recurring_id in transactions,0

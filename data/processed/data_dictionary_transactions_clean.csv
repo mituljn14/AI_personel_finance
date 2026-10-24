@@ -1,0 +1,34 @@
+column_name,data_type,missing_count,unique_values,example_values,definition
+transaction_id,string,0,67945,TXN0000001 | TXN0000002 | TXN0000003,"Unique stable id TXN#######, assigned after sorting by date, time"
+user_id,string,0,150,U0048 | U0150 | U0101,Anonymous user id U0001..U0150; FK to users.csv
+transaction_date,datetime64[ns],0,1461,2022-01-01 | 2022-01-02 | 2022-01-03,Date of the transaction (2022-01-01..2025-12-31)
+transaction_time,string,1875,40678,01:24:16 | 01:30:44 | 02:05:09,Time of day; blank when unknown (some manual cash entries)
+transaction_type,object,0,4,transfer | expense | income,income | expense | refund | transfer
+amount,float64,0,24974,1000.0 | 118.0 | 4000.0,Positive magnitude (2 decimals); transaction_type gives the financial meaning
+currency,string,0,1,INR,Always INR
+category,string,0,15,Savings and Investments | Financial Expenses | Transportation,"Top-level taxonomy category (12 expense categories, Income, Savings and Investments, Transfers)"
+subcategory,string,0,51,recurring_deposit | bank_fees | sip_mutual_fund,Taxonomy subcategory (see methodology)
+description,string,0,85,Recurring deposit instalment | Bank service charges | Mutual fund SIP contribution,Short text description
+payment_method,string,0,8,Auto Debit | Net Banking | Bank Transfer,"UPI, Debit Card, Credit Card, Cash, Net Banking, Bank Transfer, Digital Wallet, Auto Debit"
+merchant_name,string,753,669,Unity Bank Recurring Deposit | Civic Bank Charges | Pinnacle Asset Management,Fictional merchant/counterparty; blank for informal cash payments
+merchant_category,string,0,50,Bank Deposit | Bank | Mutual Fund,Generic merchant class
+account_type,string,0,5,savings_account | credit_card | digital_wallet,"savings_account, current_account, credit_card, cash_in_hand, digital_wallet"
+is_recurring,int64,0,2,1 | 0,1 when generated from a recurring pattern (recurring_id set)
+recurring_frequency,string,27361,4,monthly | bimonthly | quarterly,"monthly, bimonthly, quarterly, annual; blank if not recurring"
+is_essential,int64,0,2,0 | 1,"1 for needs-type expense/refund rows, else 0"
+planned_or_unplanned,string,0,3,not_applicable | planned | unplanned,planned | unplanned | not_applicable
+payment_status,string,0,2,completed | failed,completed | failed (failed rows are excluded from all totals)
+transaction_channel,string,0,7,auto_debit | bank_portal | in_store,"online, in_store, cash_counter, bank_portal, auto_debit, payroll_credit, atm"
+city,string,0,30,Pune | Surat | Mumbai,City where transaction occurred (user's city; travel rows may differ)
+state,string,0,20,Maharashtra | Gujarat | West Bengal,State of that city
+financial_year,string,0,5,FY2021-22 | FY2022-23 | FY2023-24,"Indian FY (Apr-Mar), e.g. FY2022-23; Jan-Mar 2022 falls in FY2021-22"
+month,int64,0,12,1 | 2 | 3,Calendar month 1-12 derived from transaction_date
+month_name,string,0,12,January | February | March,English month name
+quarter,string,0,4,Q1 | Q2 | Q3,Calendar quarter Q1-Q4
+day_of_week,string,0,7,Saturday | Sunday | Monday,Monday..Sunday
+weekend_flag,int64,0,2,1 | 0,1 for Saturday/Sunday
+needs_or_wants,string,0,4,savings | needs | not_applicable,needs | wants | savings | not_applicable
+data_source,string,0,6,bank_statement_import | upi_app_export | payroll_system,"upi_app_export, card_statement, manual_entry, bank_statement_import, wallet_export, payroll_system"
+recurring_id,string,27361,3208,REC0048_16 | REC0101_14 | REC0094_27,FK to recurring_transactions.csv; blank if not recurring
+related_transaction_id,string,67797,148,TXN0001041 | TXN0002268 | TXN0002771,For refunds: transaction_id of the original expense; blank otherwise
+year,int16,0,4,2022 | 2023 | 2024,Calendar year derived from transaction_date (added by this notebook).

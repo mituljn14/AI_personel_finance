@@ -1,0 +1,6 @@
+,missing_count,missing_pct,status
+transaction_time,1875,2.76,documented: unknown time-of-day (some manual cash entries)
+merchant_name,753,1.11,documented: unknown merchant (informal cash payments)
+recurring_frequency,27361,40.27,documented: not applicable: non-recurring transaction
+recurring_id,27361,40.27,documented: not applicable: non-recurring transaction
+related_transaction_id,67797,99.78,documented: not applicable: only refunds link to an original expense

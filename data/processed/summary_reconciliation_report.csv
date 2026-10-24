@@ -1,0 +1,11 @@
+column,user_months_compared,mismatches(>0.011),max_abs_diff
+total_income,7200,0,0.0
+total_expenses,7200,0,0.0
+essential_expenses,7200,0,0.0
+discretionary_expenses,7200,0,0.0
+refunds_received,7200,0,0.0
+net_expenses,7200,0,0.0
+net_cash_flow,7200,0,0.0
+savings_amount,7200,0,0.0
+transaction_count,7200,0,0.0
+savings_rate,7200,0,5e-05

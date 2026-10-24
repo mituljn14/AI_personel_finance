@@ -1,0 +1,151 @@
+user_id,age,occupation,employment_type,household_size,city,state,monthly_income_estimate,income_frequency,preferred_payment_method,financial_profile,profile_created_date,opening_balance_estimate
+U0001,29,Bank Officer,Salaried,3,Surat,Gujarat,39000.0,monthly,UPI,disciplined_saver,2021-12-18,123600.0
+U0002,29,Pharmacist,Salaried,2,Mumbai,Maharashtra,37500.0,monthly,UPI,balanced,2021-11-05,106200.0
+U0003,21,Student,Student,1,Pune,Maharashtra,6500.0,monthly,UPI,overspender,2021-12-11,22400.0
+U0004,39,Mechanical Engineer,Salaried,2,Ludhiana,Punjab,68500.0,monthly,UPI,balanced,2021-12-03,246600.0
+U0005,37,Delivery Partner,Gig/Part-time,1,Pune,Maharashtra,21000.0,irregular,UPI,overspender,2021-10-14,80000.0
+U0006,32,Cab Driver,Gig/Part-time,5,Jaipur,Rajasthan,26000.0,irregular,UPI,disciplined_saver,2021-12-16,91200.0
+U0007,32,Freelance Designer,Freelancer,2,Bengaluru,Karnataka,48000.0,irregular,UPI,overspender,2021-11-15,51500.0
+U0008,52,Restaurant Owner,Business Owner,4,Ahmedabad,Gujarat,73000.0,irregular,UPI,balanced,2021-12-30,288200.0
+U0009,21,Student,Student,1,Lucknow,Uttar Pradesh,6500.0,monthly,Net Banking,balanced,2021-10-18,7000.0
+U0010,42,HR Executive,Salaried,3,Bhopal,Madhya Pradesh,81000.0,monthly,UPI,disciplined_saver,2021-11-13,268300.0
+U0011,32,Delivery Partner,Gig/Part-time,5,Pune,Maharashtra,19000.0,irregular,UPI,disciplined_saver,2021-10-13,70900.0
+U0012,31,Teacher,Salaried,3,Mumbai,Maharashtra,23500.0,monthly,Debit Card,inconsistent,2021-11-06,63200.0
+U0013,48,Teacher,Salaried,4,Patna,Bihar,43000.0,monthly,Debit Card,disciplined_saver,2021-10-10,158800.0
+U0014,51,Transport Operator,Business Owner,5,Pune,Maharashtra,107500.0,seasonal,UPI,inconsistent,2021-12-31,413100.0
+U0015,20,Student,Student,1,Pune,Maharashtra,19000.0,monthly,Debit Card,disciplined_saver,2021-10-12,73200.0
+U0016,51,Teacher,Salaried,3,Pune,Maharashtra,59000.0,monthly,UPI,balanced,2021-11-18,227300.0
+U0017,30,Nurse,Salaried,1,Surat,Gujarat,34000.0,monthly,UPI,disciplined_saver,2021-11-26,55100.0
+U0018,33,Nurse,Salaried,4,Visakhapatnam,Andhra Pradesh,41500.0,monthly,Cash,overspender,2021-11-07,88800.0
+U0019,40,Cab Driver,Gig/Part-time,2,Visakhapatnam,Andhra Pradesh,27000.0,irregular,Cash,balanced,2021-10-04,78100.0
+U0020,31,Freelance Web Developer,Freelancer,4,Pune,Maharashtra,26500.0,irregular,UPI,overspender,2021-10-10,85500.0
+U0021,38,Pharmacist,Salaried,3,Bengaluru,Karnataka,55000.0,monthly,Debit Card,inconsistent,2021-10-31,210400.0
+U0022,68,Retired (Pension),Retired,3,Bhopal,Madhya Pradesh,25500.0,monthly,Net Banking,disciplined_saver,2021-12-27,52100.0
+U0023,32,Delivery Partner,Gig/Part-time,4,Mumbai,Maharashtra,16500.0,irregular,UPI,inconsistent,2021-10-11,48900.0
+U0024,38,Consultant,Freelancer,3,Mumbai,Maharashtra,115500.0,irregular,UPI,disciplined_saver,2021-12-30,403900.0
+U0025,29,Accountant,Salaried,3,Bhopal,Madhya Pradesh,49500.0,monthly,Debit Card,balanced,2021-10-12,162300.0
+U0026,31,Photographer,Freelancer,4,Delhi,Delhi,37000.0,irregular,UPI,inconsistent,2021-12-09,45100.0
+U0027,40,Accountant,Salaried,3,Lucknow,Uttar Pradesh,53500.0,monthly,UPI,balanced,2021-11-27,191400.0
+U0028,39,Operations Manager,Salaried,4,Bhubaneswar,Odisha,103500.0,monthly,UPI,balanced,2021-11-10,166500.0
+U0029,41,Freelance Web Developer,Freelancer,3,Bengaluru,Karnataka,37000.0,irregular,Net Banking,disciplined_saver,2021-10-15,122500.0
+U0030,45,Freelance Writer,Freelancer,3,Thiruvananthapuram,Kerala,12500.0,irregular,UPI,overspender,2021-12-31,45700.0
+U0031,41,Freelance Web Developer,Freelancer,4,Bengaluru,Karnataka,88000.0,irregular,UPI,disciplined_saver,2021-10-06,90500.0
+U0032,28,Operations Manager,Salaried,3,Pune,Maharashtra,72500.0,monthly,Cash,overspender,2021-10-23,251000.0
+U0033,41,Consultant,Freelancer,4,Hyderabad,Telangana,181500.0,irregular,UPI,balanced,2021-12-07,515700.0
+U0034,56,Agri-business Owner,Business Owner,5,Nagpur,Maharashtra,75000.0,seasonal,Net Banking,inconsistent,2021-12-03,191600.0
+U0035,31,Bank Officer,Salaried,3,Surat,Gujarat,70500.0,monthly,UPI,disciplined_saver,2021-11-23,91100.0
+U0036,28,HR Executive,Salaried,3,Jaipur,Rajasthan,28000.0,monthly,Net Banking,overspender,2021-11-12,47900.0
+U0037,42,Retail Shop Owner,Business Owner,3,Mysuru,Karnataka,57000.0,seasonal,UPI,balanced,2021-12-13,93900.0
+U0038,28,Mechanical Engineer,Salaried,3,Hyderabad,Telangana,58500.0,monthly,UPI,inconsistent,2021-11-18,146600.0
+U0039,20,Student,Student,2,Ahmedabad,Gujarat,13000.0,monthly,UPI,balanced,2021-11-08,12100.0
+U0040,32,HR Executive,Salaried,4,Bengaluru,Karnataka,41000.0,monthly,UPI,overspender,2021-12-06,53400.0
+U0041,58,Teacher,Salaried,4,Hyderabad,Telangana,68500.0,monthly,UPI,balanced,2021-12-13,67900.0
+U0042,48,Transport Operator,Business Owner,2,Visakhapatnam,Andhra Pradesh,98000.0,irregular,Credit Card,balanced,2021-11-10,265400.0
+U0043,62,Contractor,Business Owner,3,Mumbai,Maharashtra,88000.0,seasonal,UPI,balanced,2021-11-16,348700.0
+U0044,20,Student,Student,1,Kochi,Kerala,14000.0,monthly,Debit Card,balanced,2021-10-23,35900.0
+U0045,33,Data Analyst,Salaried,5,Ludhiana,Punjab,127500.0,monthly,UPI,balanced,2021-10-31,378500.0
+U0046,37,Freelance Designer,Freelancer,4,Nashik,Maharashtra,27000.0,irregular,UPI,disciplined_saver,2021-10-12,29800.0
+U0047,46,HR Executive,Salaried,4,Pune,Maharashtra,39000.0,monthly,UPI,balanced,2021-10-31,106700.0
+U0048,27,Accountant,Salaried,3,Pune,Maharashtra,42500.0,monthly,Credit Card,overspender,2021-12-11,71100.0
+U0049,26,Delivery Partner,Gig/Part-time,3,Chandigarh,Chandigarh,26500.0,irregular,UPI,inconsistent,2021-11-22,54100.0
+U0050,36,Government Clerk,Salaried,1,Bhopal,Madhya Pradesh,35500.0,monthly,Debit Card,balanced,2021-10-24,44000.0
+U0051,31,Software Engineer,Salaried,1,Chennai,Tamil Nadu,64000.0,monthly,UPI,disciplined_saver,2021-11-27,239600.0
+U0052,39,Retail Shop Owner,Business Owner,3,Mumbai,Maharashtra,87500.0,irregular,Net Banking,disciplined_saver,2021-10-20,314800.0
+U0053,62,Retired (Pension),Retired,2,Mumbai,Maharashtra,16000.0,monthly,Cash,overspender,2021-10-01,51700.0
+U0054,35,Marketing Executive,Salaried,2,Chennai,Tamil Nadu,59500.0,monthly,UPI,balanced,2021-12-30,58700.0
+U0055,37,Consultant,Freelancer,3,Jaipur,Rajasthan,65500.0,irregular,UPI,overspender,2021-11-18,85500.0
+U0056,32,Software Engineer,Salaried,5,Guwahati,Assam,71500.0,monthly,UPI,inconsistent,2021-12-12,191900.0
+U0057,28,Mechanical Engineer,Salaried,4,Lucknow,Uttar Pradesh,49000.0,monthly,UPI,inconsistent,2021-12-18,63000.0
+U0058,32,Government Clerk,Salaried,2,Kolkata,West Bengal,39500.0,monthly,UPI,balanced,2021-10-18,150600.0
+U0059,32,Government Clerk,Salaried,3,Jaipur,Rajasthan,33500.0,monthly,Debit Card,balanced,2021-11-13,125900.0
+U0060,76,Retired (Pension),Retired,2,Gurugram,Haryana,33500.0,monthly,UPI,balanced,2021-10-08,71300.0
+U0061,27,Software Engineer,Salaried,1,Pune,Maharashtra,55500.0,monthly,Debit Card,overspender,2021-10-10,99700.0
+U0062,27,Freelance Writer,Freelancer,1,Mumbai,Maharashtra,20500.0,irregular,UPI,disciplined_saver,2021-12-25,19400.0
+U0063,26,Software Engineer,Salaried,3,Kolkata,West Bengal,51000.0,monthly,Debit Card,balanced,2021-10-31,122100.0
+U0064,38,Nurse,Salaried,4,Hyderabad,Telangana,41500.0,monthly,Debit Card,overspender,2021-10-05,153000.0
+U0065,51,Agri-business Owner,Business Owner,4,Chennai,Tamil Nadu,53000.0,seasonal,UPI,disciplined_saver,2021-11-28,211100.0
+U0066,46,Freelance Web Developer,Freelancer,5,Bhubaneswar,Odisha,87000.0,irregular,UPI,inconsistent,2021-12-15,260000.0
+U0067,52,Marketing Executive,Salaried,6,Jaipur,Rajasthan,36000.0,monthly,Debit Card,inconsistent,2021-11-17,135700.0
+U0068,37,Sales Executive,Salaried,5,Jaipur,Rajasthan,37000.0,monthly,UPI,inconsistent,2021-10-19,56300.0
+U0069,33,Nurse,Salaried,3,Ahmedabad,Gujarat,34000.0,monthly,UPI,overspender,2021-10-21,33300.0
+U0070,49,Bank Officer,Salaried,3,Bhubaneswar,Odisha,88000.0,monthly,UPI,balanced,2021-12-10,350200.0
+U0071,23,Student,Student,1,Thiruvananthapuram,Kerala,19500.0,monthly,UPI,balanced,2021-10-16,77700.0
+U0072,34,Small Trader,Business Owner,4,Kolhapur,Maharashtra,67000.0,irregular,Debit Card,balanced,2021-12-14,174900.0
+U0073,37,Private Tutor,Freelancer,3,Mumbai,Maharashtra,30000.0,irregular,Debit Card,balanced,2021-12-22,26500.0
+U0074,34,HR Executive,Salaried,3,Gurugram,Haryana,36500.0,monthly,UPI,inconsistent,2021-12-20,74000.0
+U0075,33,Mechanical Engineer,Salaried,4,Chennai,Tamil Nadu,80000.0,monthly,Cash,balanced,2021-12-26,134400.0
+U0076,20,Student,Student,1,Chennai,Tamil Nadu,11500.0,monthly,UPI,overspender,2021-10-18,15300.0
+U0077,62,Retired (Pension),Retired,2,Kolkata,West Bengal,40000.0,monthly,UPI,inconsistent,2021-12-08,155300.0
+U0078,30,HR Executive,Salaried,4,Kolkata,West Bengal,30500.0,monthly,Cash,balanced,2021-11-18,55900.0
+U0079,44,Sales Executive,Salaried,3,Chennai,Tamil Nadu,42500.0,monthly,UPI,inconsistent,2021-11-18,72200.0
+U0080,34,Private Tutor,Freelancer,1,Ahmedabad,Gujarat,13500.0,irregular,UPI,disciplined_saver,2021-10-19,41400.0
+U0081,36,Government Clerk,Salaried,2,Pune,Maharashtra,33000.0,monthly,Net Banking,overspender,2021-11-23,55900.0
+U0082,48,Operations Manager,Salaried,4,Delhi,Delhi,82500.0,monthly,Credit Card,inconsistent,2021-11-28,202900.0
+U0083,32,Government Officer,Salaried,3,Kochi,Kerala,91000.0,monthly,Cash,inconsistent,2021-12-26,230800.0
+U0084,49,Photographer,Freelancer,4,Lucknow,Uttar Pradesh,27500.0,irregular,UPI,balanced,2021-11-04,26600.0
+U0085,30,HR Executive,Salaried,1,Delhi,Delhi,46000.0,monthly,UPI,balanced,2021-11-30,98600.0
+U0086,33,Accountant,Salaried,2,Gurugram,Haryana,48000.0,monthly,Net Banking,disciplined_saver,2021-12-10,87900.0
+U0087,37,Data Analyst,Salaried,2,Patna,Bihar,47500.0,monthly,UPI,disciplined_saver,2021-11-04,41500.0
+U0088,76,Retired (Pension),Retired,3,Kolhapur,Maharashtra,28000.0,monthly,Credit Card,disciplined_saver,2021-10-10,31700.0
+U0089,47,Operations Manager,Salaried,4,Delhi,Delhi,87000.0,monthly,UPI,inconsistent,2021-10-15,261200.0
+U0090,36,Pharmacist,Salaried,3,Mumbai,Maharashtra,46000.0,monthly,Cash,balanced,2021-11-09,87500.0
+U0091,43,Contractor,Business Owner,4,Pune,Maharashtra,90500.0,seasonal,UPI,balanced,2021-10-08,263000.0
+U0092,31,Mechanical Engineer,Salaried,3,Jaipur,Rajasthan,46000.0,monthly,UPI,overspender,2021-11-21,142400.0
+U0093,39,Consultant,Freelancer,3,Jaipur,Rajasthan,106000.0,irregular,Credit Card,overspender,2021-11-19,232200.0
+U0094,41,Government Clerk,Salaried,4,Kolkata,West Bengal,41000.0,monthly,UPI,balanced,2021-11-06,54200.0
+U0095,38,Part-time Worker,Gig/Part-time,2,Hyderabad,Telangana,15000.0,irregular,UPI,inconsistent,2021-11-23,41900.0
+U0096,28,Sales Executive,Salaried,3,Delhi,Delhi,70000.0,monthly,UPI,overspender,2021-11-15,191100.0
+U0097,67,Retired (Pension),Retired,3,Guwahati,Assam,13500.0,monthly,Debit Card,balanced,2021-12-25,33100.0
+U0098,40,Agri-business Owner,Business Owner,3,Delhi,Delhi,52500.0,seasonal,UPI,balanced,2021-10-11,196800.0
+U0099,36,Delivery Partner,Gig/Part-time,3,Mumbai,Maharashtra,20500.0,irregular,UPI,disciplined_saver,2021-11-16,64300.0
+U0100,43,Accountant,Salaried,5,Pune,Maharashtra,38000.0,monthly,UPI,overspender,2021-11-07,84800.0
+U0101,66,Retired (Pension),Retired,1,Mumbai,Maharashtra,28000.0,monthly,UPI,disciplined_saver,2021-11-04,26900.0
+U0102,44,Freelance Web Developer,Freelancer,6,Guwahati,Assam,115000.0,irregular,Cash,balanced,2021-11-20,237400.0
+U0103,45,Freelance Designer,Freelancer,2,Mysuru,Karnataka,93000.0,irregular,UPI,disciplined_saver,2021-11-09,307400.0
+U0104,33,Software Engineer,Salaried,3,Pune,Maharashtra,246000.0,monthly,UPI,disciplined_saver,2021-10-05,312800.0
+U0105,21,Student,Student,1,Chennai,Tamil Nadu,10000.0,monthly,Net Banking,overspender,2021-11-13,32800.0
+U0106,37,Teacher,Salaried,1,Pune,Maharashtra,36500.0,monthly,Debit Card,disciplined_saver,2021-11-23,80800.0
+U0107,35,Nurse,Salaried,5,Surat,Gujarat,38500.0,monthly,Net Banking,disciplined_saver,2021-10-06,138600.0
+U0108,25,Bank Officer,Salaried,1,Chennai,Tamil Nadu,42500.0,monthly,Debit Card,disciplined_saver,2021-12-17,116200.0
+U0109,42,Agri-business Owner,Business Owner,4,Delhi,Delhi,51000.0,irregular,Credit Card,inconsistent,2021-12-17,141100.0
+U0110,34,Sales Executive,Salaried,5,Coimbatore,Tamil Nadu,35500.0,monthly,Credit Card,disciplined_saver,2021-10-31,115000.0
+U0111,62,Retired (Pension),Retired,3,Bhubaneswar,Odisha,21000.0,monthly,Cash,disciplined_saver,2021-12-15,66600.0
+U0112,38,Part-time Worker,Gig/Part-time,2,Kolhapur,Maharashtra,18000.0,irregular,UPI,balanced,2021-10-19,35000.0
+U0113,41,Nurse,Salaried,3,Thiruvananthapuram,Kerala,23500.0,monthly,Debit Card,inconsistent,2021-10-12,72200.0
+U0114,31,Teacher,Salaried,2,Ahmedabad,Gujarat,35500.0,monthly,UPI,inconsistent,2021-11-25,118700.0
+U0115,47,Government Officer,Salaried,2,Delhi,Delhi,75000.0,monthly,UPI,balanced,2021-10-13,246200.0
+U0116,46,Restaurant Owner,Business Owner,2,Bhopal,Madhya Pradesh,80500.0,seasonal,Net Banking,overspender,2021-11-17,276700.0
+U0117,51,Data Analyst,Salaried,2,Visakhapatnam,Andhra Pradesh,81500.0,monthly,Cash,disciplined_saver,2021-10-22,140200.0
+U0118,49,Sales Executive,Salaried,3,Mumbai,Maharashtra,43000.0,monthly,Debit Card,disciplined_saver,2021-11-13,152800.0
+U0119,27,Software Engineer,Salaried,1,Bengaluru,Karnataka,75500.0,monthly,UPI,disciplined_saver,2021-12-04,297400.0
+U0120,29,Cab Driver,Gig/Part-time,5,Hyderabad,Telangana,28500.0,irregular,UPI,disciplined_saver,2021-10-05,73900.0
+U0121,43,Retail Shop Owner,Business Owner,3,Pune,Maharashtra,135000.0,seasonal,Cash,balanced,2021-10-07,119200.0
+U0122,42,Software Engineer,Salaried,5,Nashik,Maharashtra,109500.0,monthly,UPI,balanced,2021-11-25,152300.0
+U0123,38,Pharmacist,Salaried,3,Bengaluru,Karnataka,37500.0,monthly,UPI,balanced,2021-11-10,108400.0
+U0124,36,Transport Operator,Business Owner,2,Patna,Bihar,54000.0,seasonal,UPI,overspender,2021-10-30,119100.0
+U0125,74,Retired (Pension),Retired,2,Kolkata,West Bengal,30000.0,monthly,UPI,overspender,2022-01-01,68400.0
+U0126,40,Private Tutor,Freelancer,3,Gurugram,Haryana,24500.0,irregular,Net Banking,balanced,2022-01-01,75400.0
+U0127,62,Retired (Pension),Retired,1,Hyderabad,Telangana,40500.0,monthly,UPI,balanced,2021-12-30,155900.0
+U0128,39,Nurse,Salaried,3,Lucknow,Uttar Pradesh,36000.0,monthly,Net Banking,disciplined_saver,2021-11-04,52000.0
+U0129,41,HR Executive,Salaried,4,Mumbai,Maharashtra,50500.0,monthly,UPI,overspender,2021-12-22,46100.0
+U0130,40,Teacher,Salaried,5,Patna,Bihar,28500.0,monthly,Net Banking,disciplined_saver,2021-10-14,47800.0
+U0131,38,Data Analyst,Salaried,4,Bhopal,Madhya Pradesh,70500.0,monthly,Net Banking,balanced,2021-11-05,143100.0
+U0132,27,Sales Executive,Salaried,1,Surat,Gujarat,32000.0,monthly,Cash,balanced,2021-12-09,101700.0
+U0133,39,Marketing Executive,Salaried,3,Delhi,Delhi,43500.0,monthly,Debit Card,overspender,2021-12-03,50200.0
+U0134,40,Operations Manager,Salaried,6,Bengaluru,Karnataka,101500.0,monthly,UPI,disciplined_saver,2021-12-29,316300.0
+U0135,41,Sales Executive,Salaried,6,Ahmedabad,Gujarat,69000.0,monthly,UPI,inconsistent,2021-12-29,115600.0
+U0136,39,Small Trader,Business Owner,1,Ahmedabad,Gujarat,30000.0,seasonal,UPI,balanced,2021-10-20,36000.0
+U0137,20,Student,Student,1,Ahmedabad,Gujarat,7500.0,monthly,Debit Card,balanced,2021-12-18,25900.0
+U0138,40,Government Officer,Salaried,3,Lucknow,Uttar Pradesh,150500.0,monthly,UPI,overspender,2021-12-31,183100.0
+U0139,39,Small Trader,Business Owner,2,Surat,Gujarat,45000.0,irregular,UPI,overspender,2021-11-05,98900.0
+U0140,34,HR Executive,Salaried,2,Mumbai,Maharashtra,42000.0,monthly,Debit Card,inconsistent,2021-10-29,63200.0
+U0141,34,Data Analyst,Salaried,3,Kolkata,West Bengal,64500.0,monthly,Cash,balanced,2021-10-05,199700.0
+U0142,30,Teacher,Salaried,5,Pune,Maharashtra,39500.0,monthly,UPI,inconsistent,2021-11-09,58200.0
+U0143,34,Teacher,Salaried,5,Surat,Gujarat,39500.0,monthly,UPI,balanced,2021-11-20,75900.0
+U0144,41,Small Trader,Business Owner,2,Ludhiana,Punjab,33000.0,irregular,UPI,inconsistent,2021-12-08,95500.0
+U0145,63,Retired (Pension),Retired,1,Mumbai,Maharashtra,27500.0,monthly,Cash,inconsistent,2021-10-25,66500.0
+U0146,38,Government Officer,Salaried,4,Indore,Madhya Pradesh,68000.0,monthly,UPI,balanced,2021-10-05,127100.0
+U0147,75,Retired (Pension),Retired,1,Chennai,Tamil Nadu,13500.0,monthly,UPI,disciplined_saver,2021-10-25,47500.0
+U0148,44,Mechanical Engineer,Salaried,2,Coimbatore,Tamil Nadu,60000.0,monthly,UPI,inconsistent,2021-11-16,208900.0
+U0149,39,Photographer,Freelancer,2,Patna,Bihar,57000.0,irregular,Net Banking,overspender,2021-12-24,223600.0
+U0150,25,Student,Student,2,Surat,Gujarat,21500.0,monthly,UPI,inconsistent,2021-10-11,35300.0

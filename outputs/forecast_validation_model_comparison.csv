@@ -1,0 +1,17 @@
+model,validation_MAE_INR,validation_RMSE_INR,validation_rows
+HistGradientBoosting absolute lr=0.05 leaves=20 iterations=200 l2=5,17263.72597838216,33675.818236744155,1800
+HistGradientBoosting absolute lr=0.08 leaves=10 iterations=200 l2=1,17273.823426758332,33953.971630768305,1800
+HistGradientBoosting absolute lr=0.05 leaves=20 iterations=250 l2=5,17291.033486972145,33651.83330197499,1800
+HistGradientBoosting absolute lr=0.03 leaves=15 iterations=350 l2=5,17298.443592022115,33648.19631763756,1800
+HistGradientBoosting absolute lr=0.03 leaves=10 iterations=500 l2=1,17301.444952684513,33751.10530405547,1800
+HistGradientBoosting absolute lr=0.03 leaves=10 iterations=350 l2=1,17301.514535120383,33823.420540255625,1800
+HistGradientBoosting absolute lr=0.05 leaves=10 iterations=200 l2=5,17302.83855384239,33907.055239529276,1800
+HistGradientBoosting absolute lr=0.03 leaves=15 iterations=200 l2=5,17311.466147619576,33997.54818677991,1800
+HistGradientBoosting absolute lr=0.08 leaves=10 iterations=350 l2=1,17316.650735525953,33812.08267348603,1800
+HistGradientBoosting absolute lr=0.03 leaves=10 iterations=350 l2=5,17319.961904234617,33948.826365981935,1800
+HistGradientBoosting absolute lr=0.05 leaves=15 iterations=200 l2=5,17321.659590105035,33609.09048307914,1800
+HistGradientBoosting absolute lr=0.05 leaves=10 iterations=350 l2=5,17322.706098996474,33777.83923569843,1800
+ExtraTrees absolute error,17437.39917955808,33096.892020824474,1800
+GradientBoosting Huber,17554.598723887575,33554.815484712024,1800
+12-month historical average,18052.325005555555,32780.172614369156,1800
+LinearRegression,18144.657015960835,33138.522703785566,1800

@@ -1,0 +1,111 @@
+{
+  "project": "AI Personal Finance and Smart Expense Predictor",
+  "data_period": {
+    "start": "2022-01-01",
+    "end": "2025-12-31"
+  },
+  "source_transaction_rows": 67945,
+  "exact_duplicate_rows_removed": 0,
+  "duplicate_transaction_id_rows_removed": 0,
+  "clean_transaction_rows": 67945,
+  "transactions_rejected_for_review": 0,
+  "completed_rows_used_for_analysis": 67639,
+  "failed_payment_rows_excluded_from_totals": 306,
+  "unique_users": 150,
+  "date_min": "2022-01-01",
+  "date_max": "2025-12-31",
+  "transaction_type_counts": {
+    "expense": 51990,
+    "income": 11115,
+    "transfer": 4692,
+    "refund": 148
+  },
+  "category_counts": {
+    "Utilities": 17504,
+    "Income": 11115,
+    "Food": 8494,
+    "Housing": 7962,
+    "Transportation": 4694,
+    "Entertainment": 3943,
+    "Savings and Investments": 3412,
+    "Financial Expenses": 2269,
+    "Healthcare": 1921,
+    "Personal Care": 1600,
+    "Shopping": 1467,
+    "Education": 1313,
+    "Transfers": 1280,
+    "Travel": 520,
+    "Gifts & Donations": 451
+  },
+  "outliers_extreme_iqr_flagged_for_review": 0,
+  "ml_split_rows": {
+    "train": 33536,
+    "validation": 17044,
+    "test": 17059
+  },
+  "referential_integrity_issues_total": 0,
+  "summary_reconciliation_mismatches_total": 0,
+  "annual_totals_inr_completed": {
+    "2022": {
+      "total_income": 86439622.0,
+      "total_expenses": 64984351.0,
+      "refunds_received": 431541.0,
+      "net_expenses": 64552810.0,
+      "net_cash_flow": 21886812.0,
+      "savings_amount": 6159000.0
+    },
+    "2023": {
+      "total_income": 91885406.0,
+      "total_expenses": 70274397.0,
+      "refunds_received": 745144.0,
+      "net_expenses": 69529253.0,
+      "net_cash_flow": 22356153.0,
+      "savings_amount": 6031022.0
+    },
+    "2024": {
+      "total_income": 97292241.0,
+      "total_expenses": 77491806.0,
+      "refunds_received": 649147.0,
+      "net_expenses": 76842660.0,
+      "net_cash_flow": 20449581.0,
+      "savings_amount": 6493549.0
+    },
+    "2025": {
+      "total_income": 104446834.0,
+      "total_expenses": 82133375.0,
+      "refunds_received": 710290.0,
+      "net_expenses": 81423085.0,
+      "net_cash_flow": 23023749.0,
+      "savings_amount": 5845320.0
+    }
+  },
+  "notes": [
+    "Synthetic data only.",
+    "Failed payments are kept for audit and excluded from totals; transfers are never income/expense.",
+    "Refunds reduce net expenses; month_end_balance in the summary is a liquid-balance tracker, not net worth.",
+    "Forecast splits are chronological by target month."
+  ],
+  "files_written": [
+    "data_dictionary_ml_features.csv",
+    "data_dictionary_transactions_clean.csv",
+    "duplicate_transaction_ids_for_review.csv",
+    "forecast_ml_test.csv",
+    "forecast_ml_train.csv",
+    "forecast_ml_validation.csv",
+    "forecast_test_metrics.csv",
+    "forecast_validation_metrics.csv",
+    "missing_value_handling_decisions.csv",
+    "monthly_summary_rebuilt_from_clean_transactions.csv",
+    "preprocessor_forecasting.joblib",
+    "preprocessor_transactions.joblib",
+    "referential_integrity_report.csv",
+    "summary_reconciliation_report.csv",
+    "transaction_missing_value_report.csv",
+    "transactions_clean.csv",
+    "transactions_ml_test.csv.gz",
+    "transactions_ml_train.csv.gz",
+    "transactions_ml_validation.csv.gz",
+    "transactions_outliers_for_review.csv",
+    "transactions_rejected_for_review.csv"
+  ]
+}

@@ -1,0 +1,3 @@
+model,MAE_INR,RMSE_INR,rows
+HistGradientBoosting absolute lr=0.05 leaves=20 iterations=200 l2=5,18304.702448200132,36066.34109321271,1800
+12-month historical average,19519.05373888889,35571.92423710729,1800

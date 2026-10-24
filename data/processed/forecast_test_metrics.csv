@@ -1,0 +1,6 @@
+model,MAE_INR,RMSE_INR,MAPE_pct(target>=1000),n
+Baseline: last month,26540.6,48355.7,82.7,1800
+Baseline: 12-month average,19519.1,35571.9,65.4,1800
+Baseline: seasonal naive,25144.6,47054.4,77.1,1800
+LinearRegression,19899.8,35130.8,72.7,1800
+RandomForest,19532.7,34690.6,71.1,1800

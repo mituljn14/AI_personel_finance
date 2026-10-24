@@ -1,0 +1,154 @@
+file,column,dtype,required,description
+transactions.csv,transaction_id,string,required,"Unique stable id TXN#######, assigned after sorting by date, time"
+transactions.csv,user_id,string,required,Anonymous user id U0001..U0150; FK to users.csv
+transactions.csv,transaction_date,date YYYY-MM-DD,required,Date of the transaction (2022-01-01..2025-12-31)
+transactions.csv,transaction_time,time HH:MM:SS,optional,Time of day; blank when unknown (some manual cash entries)
+transactions.csv,transaction_type,string,required,income | expense | refund | transfer
+transactions.csv,amount,float INR,required,Positive magnitude (2 decimals); transaction_type gives the financial meaning
+transactions.csv,currency,string,required,Always INR
+transactions.csv,category,string,required,"Top-level taxonomy category (12 expense categories, Income, Savings and Investments, Transfers)"
+transactions.csv,subcategory,string,required,Taxonomy subcategory (see methodology)
+transactions.csv,description,string,required,Short text description
+transactions.csv,payment_method,string,required,"UPI, Debit Card, Credit Card, Cash, Net Banking, Bank Transfer, Digital Wallet, Auto Debit"
+transactions.csv,merchant_name,string,optional,Fictional merchant/counterparty; blank for informal cash payments
+transactions.csv,merchant_category,string,required,Generic merchant class
+transactions.csv,account_type,string,required,"savings_account, current_account, credit_card, cash_in_hand, digital_wallet"
+transactions.csv,is_recurring,int 0/1,required,1 when generated from a recurring pattern (recurring_id set)
+transactions.csv,recurring_frequency,string,optional,"monthly, bimonthly, quarterly, annual; blank if not recurring"
+transactions.csv,is_essential,int 0/1,required,"1 for needs-type expense/refund rows, else 0"
+transactions.csv,planned_or_unplanned,string,required,planned | unplanned | not_applicable
+transactions.csv,payment_status,string,required,completed | failed (failed rows are excluded from all totals)
+transactions.csv,transaction_channel,string,required,"online, in_store, cash_counter, bank_portal, auto_debit, payroll_credit, atm"
+transactions.csv,city,string,required,City where transaction occurred (user's city; travel rows may differ)
+transactions.csv,state,string,required,State of that city
+transactions.csv,financial_year,string,required,"Indian FY (Apr-Mar), e.g. FY2022-23; Jan-Mar 2022 falls in FY2021-22"
+transactions.csv,month,int,required,Calendar month 1-12 derived from transaction_date
+transactions.csv,month_name,string,required,English month name
+transactions.csv,quarter,string,required,Calendar quarter Q1-Q4
+transactions.csv,day_of_week,string,required,Monday..Sunday
+transactions.csv,weekend_flag,int 0/1,required,1 for Saturday/Sunday
+transactions.csv,needs_or_wants,string,required,needs | wants | savings | not_applicable
+transactions.csv,data_source,string,required,"upi_app_export, card_statement, manual_entry, bank_statement_import, wallet_export, payroll_system"
+transactions.csv,recurring_id,string,optional,FK to recurring_transactions.csv; blank if not recurring
+transactions.csv,related_transaction_id,string,optional,For refunds: transaction_id of the original expense; blank otherwise
+users.csv,user_id,string,required,Anonymous id U0001..U0150
+users.csv,age,int,required,Age in years
+users.csv,occupation,string,required,Synthetic occupation label
+users.csv,employment_type,string,required,"Salaried, Freelancer, Business Owner, Gig/Part-time, Student, Retired"
+users.csv,household_size,int,required,Persons in household
+users.csv,city,string,required,City of residence
+users.csv,state,string,required,State/UT
+users.csv,monthly_income_estimate,float INR,required,Declared average monthly income over the window (rounded to 500); irregular earners deviate month to month
+users.csv,income_frequency,string,required,"monthly, irregular, seasonal"
+users.csv,preferred_payment_method,string,required,Self-declared preferred method
+users.csv,financial_profile,string,required,"disciplined_saver, balanced, overspender, inconsistent (synthetic behaviour archetype)"
+users.csv,profile_created_date,date,required,App profile creation date (Oct-Dec 2021)
+users.csv,opening_balance_estimate,float INR,required,Synthetic opening liquid balance on 2022-01-01 used by month_end_balance
+monthly_budgets.csv,budget_id,string,required,Unique id BUD######
+monthly_budgets.csv,user_id,string,required,FK to users.csv
+monthly_budgets.csv,year,int,required,2022-2025
+monthly_budgets.csv,month,int,required,1-12
+monthly_budgets.csv,category,string,required,One of the 12 expense categories; categories a user does not budget are absent
+monthly_budgets.csv,budget_amount,float INR,required,Planned monthly limit
+monthly_budgets.csv,currency,string,required,INR
+monthly_budgets.csv,budget_created_date,date,required,Date the budget was set (before or at start of the month)
+monthly_budgets.csv,budget_type,string,required,"fixed_monthly (annual reset), seasonal_adjusted, income_percentage"
+monthly_budgets.csv,rollover_enabled,int 0/1,required,Whether unused budget rolls over (informational)
+recurring_transactions.csv,recurring_id,string,required,Unique id REC####_## ; one row per constant-amount segment of a recurring pattern
+recurring_transactions.csv,user_id,string,required,FK to users.csv
+recurring_transactions.csv,transaction_type,string,required,income | expense | transfer (savings contributions)
+recurring_transactions.csv,category,string,required,Taxonomy category
+recurring_transactions.csv,subcategory,string,required,Taxonomy subcategory (extra column)
+recurring_transactions.csv,description,string,required,Pattern description
+recurring_transactions.csv,expected_amount,float INR,required,Expected base amount for the segment; utilities vary around it with seasonality
+recurring_transactions.csv,frequency,string,required,"monthly, bimonthly, quarterly, annual"
+recurring_transactions.csv,start_date,date,required,First scheduled occurrence in the segment
+recurring_transactions.csv,end_date,date,optional,Last occurrence of an ended segment; blank if active at 2025-12-31
+recurring_transactions.csv,expected_day_of_month,int,required,Expected due day (actual date jitters +-2 days for some patterns)
+recurring_transactions.csv,active_status,string,required,active | ended (ended also when the amount changed and a new segment began)
+monthly_financial_summary.csv,user_id,string,required,FK to users.csv
+monthly_financial_summary.csv,year,int,required,2022-2025
+monthly_financial_summary.csv,month,int,required,1-12
+monthly_financial_summary.csv,total_income,float INR,required,Sum of completed income transactions
+monthly_financial_summary.csv,total_expenses,float INR,required,Gross sum of completed expense transactions (refunds not netted)
+monthly_financial_summary.csv,essential_expenses,float INR,required,Completed expenses with is_essential=1
+monthly_financial_summary.csv,discretionary_expenses,float INR,required,total_expenses - essential_expenses
+monthly_financial_summary.csv,refunds_received,float INR,required,Sum of completed refunds
+monthly_financial_summary.csv,net_cash_flow,float INR,required,total_income - (total_expenses - refunds_received); transfers excluded
+monthly_financial_summary.csv,savings_amount,float INR,required,Net savings contributions: SIP/RD/PPF/FD transfers minus redemptions; not an expense
+monthly_financial_summary.csv,savings_rate,float,optional,savings_amount / total_income when total_income > 0 else blank
+monthly_financial_summary.csv,average_transaction_amount,float INR,optional,total_expenses / completed expense count; blank if none
+monthly_financial_summary.csv,transaction_count,int,required,Completed transactions of all types
+monthly_financial_summary.csv,largest_expense_category,string,optional,Expense category with the highest net spend; blank if none
+monthly_financial_summary.csv,largest_expense_category_amount,float INR,required,Its net spend (0 if none)
+monthly_financial_summary.csv,total_budget,float INR,required,Sum of the user's category budgets for the month (0 if none)
+monthly_financial_summary.csv,total_actual_budgeted_spending,float INR,required,Net spend (expenses - refunds) in categories that have a budget that month
+monthly_financial_summary.csv,budget_utilization_percentage,float,optional,100 * total_actual_budgeted_spending / total_budget; blank if no budget
+monthly_financial_summary.csv,categories_over_budget,int,required,Count of budgeted categories with net spend > budget
+monthly_financial_summary.csv,month_end_balance,float INR,required,Tracked liquid balance estimate = opening_balance_estimate + cumulative(income - net expenses - net savings); NOT net worth
+monthly_financial_summary.csv,net_expenses,float INR,required,total_expenses - refunds_received (the eligible expense measure used for forecasting)
+monthly_expense_forecasting.csv,user_id,string,required,FK to users.csv
+monthly_expense_forecasting.csv,year,float,required,Year of the prediction (feature) month
+monthly_expense_forecasting.csv,month,float,required,Month of the prediction (feature) month
+monthly_expense_forecasting.csv,split,string,required,train (target in 2022-23) | validation (target in 2024) | test (target in 2025)
+monthly_expense_forecasting.csv,age,float,required,Static user attribute
+monthly_expense_forecasting.csv,household_size,float,required,Static user attribute
+monthly_expense_forecasting.csv,monthly_income_estimate,float,required,Static user attribute (INR)
+monthly_expense_forecasting.csv,employment_type,string,required,Static user attribute (categorical)
+monthly_expense_forecasting.csv,exp_m0,float,required,"Net expenses in the prediction month (INR), known at prediction date"
+monthly_expense_forecasting.csv,exp_lag1,float,optional,Net expenses 1 month before the prediction month
+monthly_expense_forecasting.csv,exp_lag2,float,optional,Net expenses 2 months before
+monthly_expense_forecasting.csv,exp_lag3,float,optional,Net expenses 3 months before
+monthly_expense_forecasting.csv,exp_target_month_last_year,float,optional,"Net expenses in the same calendar month as the target, one year earlier (seasonal-naive feature)"
+monthly_expense_forecasting.csv,exp_roll_mean_3,float,required,Mean net expenses over last 3 months incl. prediction month (min 1 month)
+monthly_expense_forecasting.csv,exp_roll_mean_6,float,required,Mean over last 6 months
+monthly_expense_forecasting.csv,exp_roll_mean_12,float,required,Mean over last 12 months (expanding when fewer exist)
+monthly_expense_forecasting.csv,exp_roll_std_6,float,optional,Std dev over last 6 months (>=2 months needed)
+monthly_expense_forecasting.csv,history_months,float,required,Months of history available up to and including the prediction month
+monthly_expense_forecasting.csv,essential_exp_m0,float,required,Gross essential expenses in prediction month
+monthly_expense_forecasting.csv,discretionary_exp_m0,float,required,Gross discretionary expenses in prediction month
+monthly_expense_forecasting.csv,income_m0,float,required,Income in prediction month
+monthly_expense_forecasting.csv,income_roll_mean_3,float,required,Mean income last 3 months
+monthly_expense_forecasting.csv,income_roll_mean_12,float,required,Mean income last 12 months
+monthly_expense_forecasting.csv,savings_m0,float,required,Net savings contributions in prediction month
+monthly_expense_forecasting.csv,txn_count_m0,float,required,Completed transaction count in prediction month
+monthly_expense_forecasting.csv,avg_txn_amount_m0,float,optional,Average expense amount in prediction month
+monthly_expense_forecasting.csv,cat_housing_m0,float,required,Net spend in category 'Housing' in the prediction month
+monthly_expense_forecasting.csv,cat_food_m0,float,required,Net spend in category 'Food' in the prediction month
+monthly_expense_forecasting.csv,cat_transportation_m0,float,required,Net spend in category 'Transportation' in the prediction month
+monthly_expense_forecasting.csv,cat_utilities_m0,float,required,Net spend in category 'Utilities' in the prediction month
+monthly_expense_forecasting.csv,cat_healthcare_m0,float,required,Net spend in category 'Healthcare' in the prediction month
+monthly_expense_forecasting.csv,cat_education_m0,float,required,Net spend in category 'Education' in the prediction month
+monthly_expense_forecasting.csv,cat_shopping_m0,float,required,Net spend in category 'Shopping' in the prediction month
+monthly_expense_forecasting.csv,cat_entertainment_m0,float,required,Net spend in category 'Entertainment' in the prediction month
+monthly_expense_forecasting.csv,cat_personal_care_m0,float,required,Net spend in category 'Personal Care' in the prediction month
+monthly_expense_forecasting.csv,cat_travel_m0,float,required,Net spend in category 'Travel' in the prediction month
+monthly_expense_forecasting.csv,cat_gifts_donations_m0,float,required,Net spend in category 'Gifts & Donations' in the prediction month
+monthly_expense_forecasting.csv,cat_financial_expenses_m0,float,required,Net spend in category 'Financial Expenses' in the prediction month
+monthly_expense_forecasting.csv,cat_housing_roll3,float,required,3-month mean net spend in category 'Housing' up to the prediction month
+monthly_expense_forecasting.csv,cat_food_roll3,float,required,3-month mean net spend in category 'Food' up to the prediction month
+monthly_expense_forecasting.csv,cat_transportation_roll3,float,required,3-month mean net spend in category 'Transportation' up to the prediction month
+monthly_expense_forecasting.csv,cat_utilities_roll3,float,required,3-month mean net spend in category 'Utilities' up to the prediction month
+monthly_expense_forecasting.csv,cat_healthcare_roll3,float,required,3-month mean net spend in category 'Healthcare' up to the prediction month
+monthly_expense_forecasting.csv,cat_education_roll3,float,required,3-month mean net spend in category 'Education' up to the prediction month
+monthly_expense_forecasting.csv,cat_shopping_roll3,float,required,3-month mean net spend in category 'Shopping' up to the prediction month
+monthly_expense_forecasting.csv,cat_entertainment_roll3,float,required,3-month mean net spend in category 'Entertainment' up to the prediction month
+monthly_expense_forecasting.csv,cat_personal_care_roll3,float,required,3-month mean net spend in category 'Personal Care' up to the prediction month
+monthly_expense_forecasting.csv,cat_travel_roll3,float,required,3-month mean net spend in category 'Travel' up to the prediction month
+monthly_expense_forecasting.csv,cat_gifts_donations_roll3,float,required,3-month mean net spend in category 'Gifts & Donations' up to the prediction month
+monthly_expense_forecasting.csv,cat_financial_expenses_roll3,float,required,3-month mean net spend in category 'Financial Expenses' up to the prediction month
+monthly_expense_forecasting.csv,budget_total_m0,float,required,Total budget of the prediction month
+monthly_expense_forecasting.csv,budget_total_target,float,required,Total budget of the target month (budgets are set before the month starts)
+monthly_expense_forecasting.csv,budget_utilization_m0,float,optional,Budget utilisation % in the prediction month
+monthly_expense_forecasting.csv,categories_over_budget_m0,float,required,Categories over budget in prediction month
+monthly_expense_forecasting.csv,expected_recurring_target,float,required,Sum of expected_amount of recurring EXPENSE patterns scheduled in the target month (known in advance)
+monthly_expense_forecasting.csv,target_year,float,required,Calendar year of the target month
+monthly_expense_forecasting.csv,target_month,float,required,Calendar month of the target month
+monthly_expense_forecasting.csv,target_month_sin,float,required,sin(2*pi*target_month/12)
+monthly_expense_forecasting.csv,target_month_cos,float,required,cos(2*pi*target_month/12)
+monthly_expense_forecasting.csv,target_festival_index,float,required,0-1 festival-shopping intensity of the target month for the user's state (public calendar knowledge)
+monthly_expense_forecasting.csv,target_is_festive_peak,float,required,1 if target_festival_index >= 0.5
+monthly_expense_forecasting.csv,target_is_summer_travel,float,required,1 if target month is Apr-Jun
+monthly_expense_forecasting.csv,target_is_year_end,float,required,1 if target month is December
+monthly_expense_forecasting.csv,target_is_academic_fee_month,float,required,1 if target month is Jun or Jul
+monthly_expense_forecasting.csv,target_next_month_expenses,float,required,"TARGET: net expenses (completed expenses - linked refunds, transfers excluded) in the following month, INR"

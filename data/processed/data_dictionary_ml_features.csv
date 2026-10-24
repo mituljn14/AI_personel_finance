@@ -1,0 +1,12 @@
+feature,definition
+day_of_month,Day of month (1-31) of the transaction date
+week_of_year,ISO week number of the transaction date
+is_month_start / is_month_end,1 if the date is the first / last calendar day of the month
+hour,Hour of day from transaction_time; missing when the time is unknown (median-imputed in the pipeline)
+log_amount,log(1 + amount) to reduce right skew
+days_since_prev_txn,Days since the same user's previous completed transaction (past-only)
+is_digital,1 when payment_method is not Cash
+merchant_missing,1 when merchant_name is blank (informal cash payment)
+OneHot columns,"payment_method, transaction_channel, account_type, transaction_type, category, needs_or_wants, planned_or_unplanned"
+day_of_week_ord / quarter_ord,Ordinal codes: Monday=0..Sunday=6; Q1=0..Q4=3
+StandardScaler,Numeric features centered/scaled using training-row mean and std only

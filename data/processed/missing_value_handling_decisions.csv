@@ -1,0 +1,6 @@
+field,kind,treatment
+transaction_time / merchant_name / recurring_* / related_transaction_id,documented blanks,kept as NA in transactions_clean.csv
+merchant_name (ML copy),categorical,fillna('Unknown') + merchant_missing indicator
+"hour, days_since_prev_txn (ML copy)",numeric,"SimpleImputer(median) fitted on training rows, inside the pipeline"
+"exp_lag1..3, exp_target_month_last_year, exp_roll_std_6 (forecast table)","numeric, early-history gaps",SimpleImputer(median) fitted on training rows
+"amount, dates, ids, type, category",critical,never imputed; dropna(subset=...) -> review file
