@@ -37,3 +37,33 @@ evaluates it once on the held-out 2025 test split.
 The selected model has lower test MAE than the historical-average baseline.
 The results measure performance on this synthetic dataset and are not a
 guarantee of accuracy on real household finances.
+
+## Financial Analytics & EDA (Asmi Zilpilwar)
+
+Exploratory analysis of income, expenses, savings and category-wise spending.
+It is descriptive only (no machine learning); forecasting is a separate part
+of the project.
+
+- **Notebook:** `notebooks/financial_analysis.ipynb` (12 sections: data
+  inspection, cleaning, income / expense / savings analysis, category
+  spending, monthly trends, summary, insights, conclusion).
+- **Input:** `data/processed/transactions_clean.csv` (found automatically
+  relative to the notebook).
+- **Outputs** in `outputs/eda/`:
+  - `figures/` has 8 charts: monthly income, monthly expenses, expense
+    distribution, monthly savings, category bar and pie, category-by-year
+    heatmap, income vs expenses, and seasonal pattern.
+  - `monthly_income_expense_savings.csv`, `category_spending_summary.csv` and
+    `financial_summary.csv` are summary tables for the dashboard.
+
+Definitions used: expenses are completed expense transactions minus refunds;
+savings = income - expenses; transfers are not counted as income or expense;
+failed payments are excluded from totals. This "savings" differs from the
+dataset's `savings_amount` column, which counts SIP/RD/PPF/FD contributions.
+
+Run it:
+
+```powershell
+python -m pip install -r requirements.txt
+jupyter notebook notebooks/financial_analysis.ipynb
+```
