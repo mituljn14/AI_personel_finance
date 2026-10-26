@@ -2,3 +2,8 @@ __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 .virtual_documents/
+
+# Local SQLite database
+data/personal_finance.db
+data/personal_finance.db-shm
+data/personal_finance.db-wal
