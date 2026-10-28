@@ -26,7 +26,7 @@ def get_connection(db_path=None):
 
 
 def initialize_database(db_path=None):
-    """Initialize the selected database and its indexes."""
+    """Initialize database tables, migrate existing transactions, and create indexes."""
     with get_connection(db_path) as connection:
         connection.execute("""
             CREATE TABLE IF NOT EXISTS transactions (
@@ -47,6 +47,84 @@ def initialize_database(db_path=None):
             )
         """)
 
+        # Add new transaction columns safely to existing databases.
+        existing_columns = {
+            row["name"]
+            for row in connection.execute(
+                "PRAGMA table_info(transactions)"
+            ).fetchall()
+        }
+
+        migrations = {
+            "is_essential": "INTEGER",
+            "related_transaction_id": "TEXT",
+        }
+
+        for column, definition in migrations.items():
+            if column not in existing_columns:
+                connection.execute(
+                    f"ALTER TABLE transactions ADD COLUMN {column} {definition}"
+                )
+
+        connection.execute("""
+            CREATE TABLE IF NOT EXISTS user_profiles (
+                user_id TEXT PRIMARY KEY,
+                age INTEGER CHECK (age IS NULL OR age >= 0),
+                household_size INTEGER CHECK (
+                    household_size IS NULL OR household_size >= 1
+                ),
+                monthly_income_estimate REAL CHECK (
+                    monthly_income_estimate IS NULL
+                    OR monthly_income_estimate >= 0
+                ),
+                employment_type TEXT,
+                state TEXT,
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+
+        connection.execute("""
+            CREATE TABLE IF NOT EXISTS monthly_budgets (
+                budget_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                year_month TEXT NOT NULL,
+                category TEXT NOT NULL,
+                budget_amount REAL NOT NULL CHECK (budget_amount >= 0),
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE (user_id, year_month, category),
+                FOREIGN KEY (user_id)
+                    REFERENCES user_profiles(user_id)
+                    ON DELETE CASCADE
+            )
+        """)
+
+        connection.execute("""
+            CREATE TABLE IF NOT EXISTS recurring_transactions (
+                recurring_id TEXT PRIMARY KEY,
+                user_id TEXT NOT NULL,
+                category TEXT NOT NULL,
+                description TEXT,
+                expected_amount REAL NOT NULL CHECK (expected_amount >= 0),
+                frequency TEXT NOT NULL CHECK (
+                    frequency IN (
+                        'weekly', 'monthly', 'quarterly',
+                        'half_yearly', 'yearly'
+                    )
+                ),
+                start_date TEXT NOT NULL,
+                end_date TEXT,
+                transaction_type TEXT NOT NULL DEFAULT 'expense'
+                    CHECK (transaction_type IN ('income', 'expense')),
+                is_active INTEGER NOT NULL DEFAULT 1
+                    CHECK (is_active IN (0, 1)),
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id)
+                    REFERENCES user_profiles(user_id)
+                    ON DELETE CASCADE
+            )
+        """)
+
         connection.execute("""
             CREATE INDEX IF NOT EXISTS idx_transactions_date
             ON transactions(transaction_date)
@@ -55,6 +133,21 @@ def initialize_database(db_path=None):
         connection.execute("""
             CREATE INDEX IF NOT EXISTS idx_transactions_category
             ON transactions(category)
+        """)
+
+        connection.execute("""
+            CREATE INDEX IF NOT EXISTS idx_transactions_user_date
+            ON transactions(user_id, transaction_date)
+        """)
+
+        connection.execute("""
+            CREATE INDEX IF NOT EXISTS idx_budgets_user_month
+            ON monthly_budgets(user_id, year_month)
+        """)
+
+        connection.execute("""
+            CREATE INDEX IF NOT EXISTS idx_recurring_user_dates
+            ON recurring_transactions(user_id, start_date, end_date)
         """)
 
 

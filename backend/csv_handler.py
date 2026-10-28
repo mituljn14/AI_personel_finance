@@ -1,5 +1,6 @@
 
 import csv
+import math
 from datetime import date
 from pathlib import Path
 
@@ -62,44 +63,71 @@ def import_transactions(file_path, db_path=None):
     with open(file_path, "r", newline="", encoding="utf-8-sig") as csv_file:
         reader = csv.DictReader(csv_file)
 
-        if not reader.fieldnames or not required_fields.issubset(reader.fieldnames):
-            raise ValueError("CSV file is missing required transaction columns.")
+        if (
+            not reader.fieldnames
+            or not required_fields.issubset(reader.fieldnames)
+        ):
+            raise ValueError(
+                "CSV file is missing required transaction columns."
+            )
 
         with get_connection(db_path) as connection:
             for row in reader:
-                transaction_id = (row.get("transaction_id") or "").strip()
+                transaction_id = (
+                    row.get("transaction_id") or ""
+                ).strip()
                 user_id = (row.get("user_id") or "").strip()
-                transaction_date = (row.get("transaction_date") or "").strip()
-                transaction_type = (row.get("transaction_type") or "").strip()
+                transaction_date = (
+                    row.get("transaction_date") or ""
+                ).strip()
+                transaction_type = (
+                    row.get("transaction_type") or ""
+                ).strip()
                 category = (row.get("category") or "").strip()
 
                 if not all([
-                    transaction_id, user_id, transaction_date,
-                    transaction_type, category,
+                    transaction_id,
+                    user_id,
+                    transaction_date,
+                    transaction_type,
+                    category,
                 ]):
                     skipped += 1
                     continue
 
-                if transaction_type not in {"income", "expense", "transfer"}:
+                if transaction_type not in {
+                    "income", "expense", "transfer"
+                }:
                     skipped += 1
                     continue
 
                 try:
-                    date.fromisoformat(transaction_date)
+                    parsed_date = date.fromisoformat(transaction_date)
                     amount = float(row["amount"])
-                    if amount < 0:
+
+                    if (
+                        parsed_date.isoformat() != transaction_date
+                        or not math.isfinite(amount)
+                        or amount < 0
+                    ):
                         skipped += 1
                         continue
+
                 except (TypeError, ValueError):
                     skipped += 1
                     continue
 
+                # Skip IDs that already exist in the database.
                 existing = connection.execute(
-                    "SELECT 1 FROM transactions WHERE transaction_id = ?",
+                    """
+                    SELECT 1
+                    FROM transactions
+                    WHERE transaction_id = ?
+                    """,
                     (transaction_id,),
                 ).fetchone()
 
-                if existing:
+                if existing is not None:
                     skipped += 1
                     continue
 
@@ -128,6 +156,7 @@ def import_transactions(file_path, db_path=None):
                         (row.get("payment_status") or "completed").strip(),
                     ),
                 )
+
                 imported += 1
 
     return {"imported": imported, "skipped": skipped}

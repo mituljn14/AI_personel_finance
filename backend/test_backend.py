@@ -208,6 +208,175 @@ class BackendTests(unittest.TestCase):
         self.assertEqual(len(duplicates), 1)
         self.assertEqual(len(duplicates[0]["transactions"]), 2)
 
+    
+    def test_rejects_invalid_date_format(self):
+        with self.assertRaises(ValueError):
+            add_transaction(
+                user_id="user1",
+                transaction_date="2026-1-05",
+                transaction_type="expense",
+                amount=100,
+                category="Food",
+                db_path=self.db_path,
+            )
+
+    def test_rejects_nan_amount(self):
+        with self.assertRaises(ValueError):
+            add_transaction(
+                user_id="user1",
+                transaction_date="2026-01-05",
+                transaction_type="expense",
+                amount=float("nan"),
+                category="Food",
+                db_path=self.db_path,
+            )
+
+    def test_rejects_infinite_amount(self):
+        with self.assertRaises(ValueError):
+            add_transaction(
+                user_id="user1",
+                transaction_date="2026-01-05",
+                transaction_type="expense",
+                amount=float("inf"),
+                category="Food",
+                db_path=self.db_path,
+            )
+
+    def test_rejects_empty_category(self):
+        with self.assertRaises(ValueError):
+            add_transaction(
+                user_id="user1",
+                transaction_date="2026-01-05",
+                transaction_type="expense",
+                amount=100,
+                category="   ",
+                db_path=self.db_path,
+            )
+
+    
+    def test_csv_import_new_transaction(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            csv_path = Path(temp_dir) / "new_transactions.csv"
+
+            with csv_path.open("w", newline="", encoding="utf-8") as file:
+                writer = csv.DictWriter(
+                    file,
+                    fieldnames=[
+                        "transaction_id", "user_id", "transaction_date",
+                        "transaction_type", "amount", "currency",
+                        "category", "subcategory", "description",
+                        "payment_method", "merchant_name", "payment_status",
+                    ],
+                )
+                writer.writeheader()
+                writer.writerow({
+                    "transaction_id": "CSV_NEW_1",
+                    "user_id": self.user_id,
+                    "transaction_date": "2026-02-10",
+                    "transaction_type": "expense",
+                    "amount": "250.50",
+                    "currency": "INR",
+                    "category": "Food",
+                    "subcategory": "Groceries",
+                    "description": "Imported groceries",
+                    "payment_method": "UPI",
+                    "merchant_name": "Local Store",
+                    "payment_status": "completed",
+                })
+
+            result = import_transactions(csv_path, db_path=self.db_path)
+
+            self.assertEqual(result, {"imported": 1, "skipped": 0})
+
+            transactions = get_transactions(
+                self.user_id, db_path=self.db_path
+            )
+            imported = next(
+                row for row in transactions
+                if row["transaction_id"] == "CSV_NEW_1"
+            )
+            self.assertEqual(imported["amount"], 250.50)
+
+    def test_csv_import_rejects_non_finite_amounts(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            csv_path = Path(temp_dir) / "invalid_amounts.csv"
+
+            with csv_path.open("w", newline="", encoding="utf-8") as file:
+                writer = csv.DictWriter(file, fieldnames=[
+                    "transaction_id", "user_id", "transaction_date",
+                    "transaction_type", "amount", "currency", "category",
+                    "subcategory", "description", "payment_method",
+                    "merchant_name", "payment_status",
+                ])
+                writer.writeheader()
+
+                for transaction_id, amount in [
+                    ("CSV_NAN", "nan"),
+                    ("CSV_INF", "inf"),
+                    ("CSV_NEG_INF", "-inf"),
+                ]:
+                    writer.writerow({
+                        "transaction_id": transaction_id,
+                        "user_id": self.user_id,
+                        "transaction_date": "2026-02-10",
+                        "transaction_type": "expense",
+                        "amount": amount,
+                        "currency": "INR",
+                        "category": "Food",
+                        "payment_status": "completed",
+                    })
+
+            result = import_transactions(csv_path, db_path=self.db_path)
+
+            self.assertEqual(result, {"imported": 0, "skipped": 3})
+
+    def test_csv_import_rejects_malformed_date(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            csv_path = Path(temp_dir) / "invalid_date.csv"
+
+            with csv_path.open("w", newline="", encoding="utf-8") as file:
+                writer = csv.DictWriter(file, fieldnames=[
+                    "transaction_id", "user_id", "transaction_date",
+                    "transaction_type", "amount", "currency", "category",
+                    "subcategory", "description", "payment_method",
+                    "merchant_name", "payment_status",
+                ])
+                writer.writeheader()
+                writer.writerow({
+                    "transaction_id": "CSV_BAD_DATE",
+                    "user_id": self.user_id,
+                    "transaction_date": "2026-2-10",
+                    "transaction_type": "expense",
+                    "amount": "100",
+                    "currency": "INR",
+                    "category": "Food",
+                    "payment_status": "completed",
+                })
+
+            result = import_transactions(csv_path, db_path=self.db_path)
+
+            self.assertEqual(result, {"imported": 0, "skipped": 1})
+
+    def test_csv_import_rejects_missing_columns(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            csv_path = Path(temp_dir) / "missing_columns.csv"
+            csv_path.write_text(
+                "transaction_id,user_id,amount\n"
+                "CSV_1,TEST_USER,100\n",
+                encoding="utf-8",
+            )
+
+            with self.assertRaises(ValueError):
+                import_transactions(csv_path, db_path=self.db_path)
+
+    def test_duplicate_detector_returns_empty_when_no_duplicates(self):
+        duplicates = find_possible_duplicates(
+            user_id=self.user_id,
+            db_path=self.db_path,
+        )
+
+        self.assertEqual(duplicates, [])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
