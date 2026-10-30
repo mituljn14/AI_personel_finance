@@ -77,3 +77,40 @@ def predict_next_month(feature_row, model_path=None):
         "predicted_net_expenses": round(prediction, 2),
         "currency": "INR",
     }
+
+
+
+def forecast_user_expenses(
+    user_id,
+    target_month,
+    db_path=None,
+    model_path=None,
+):
+    """
+    Generate a next-month expense forecast for a user.
+
+    Builds the required features from the user's financial data
+    and passes them to the trained forecasting model.
+    """
+    from backend.feature_engineering import build_forecast_features
+
+    # Step 1: Generate all required model features.
+    feature_row = build_forecast_features(
+        user_id=user_id,
+        target_month=target_month,
+        db_path=db_path,
+    )
+
+    # Step 2: Predict next-month net expenses.
+    prediction = predict_next_month(
+        feature_row=feature_row,
+        model_path=model_path,
+    )
+
+    # Step 3: Include the forecast month in the result.
+    return {
+        "user_id": user_id,
+        "target_month": target_month,
+        **prediction,
+    }
+
